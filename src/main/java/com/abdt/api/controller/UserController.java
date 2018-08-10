@@ -27,16 +27,14 @@ public class UserController {
 
     // registration (anyone can access)
     @PostMapping("/user")
-    public ResponseEntity<User> createUser(
-            @RequestParam("username") String username,
-            @RequestParam("password") String password,
-            @RequestParam(value = "first_name", required = false) String first_name,
-            @RequestParam(value = "last_name", required = false) String last_name) {
+    public ResponseEntity<User> createUser(@RequestBody User newUser) {
 
-        if (userService.isUserExist(username)) {
-            logger.warn("A user with name " + username + " already exists");
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        if (newUser.getUsername() == null || newUser.getPassword() == null) {
+            logger.error("Minimal required info (email and password) is not provided!");
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
+
+        String username = newUser.getUsername();
 
         // validate email
         EmailValidator emailValidator = new EmailValidator();
@@ -45,7 +43,12 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
 
-        final User created = new User(username, passwordEncoder.encode(password), "USER", first_name, last_name);
+        if (userService.isUserExist(username)) {
+            logger.warn("A user with name " + username + " already exists");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        final User created = new User(username, passwordEncoder.encode(newUser.getPassword()), "USER", newUser.getFirst_name(), newUser.getLast_name());
         userService.saveUser(created);
         logger.info("A new user just registered");
 
@@ -56,7 +59,7 @@ public class UserController {
     @GetMapping("/user")
     public ResponseEntity<List<User>> getAllUsers(Authentication auth) {
         final User user = ((UserPrincipal) auth.getPrincipal()).getUser();
-        if (user.getRole().equals("ADMIN")){
+        if (user.getRole().equals("ADMIN")) {
             List<User> result = userService.findAllUsers();
             logger.info("Admin " + user.getUsername() + " requested for all users");
             return new ResponseEntity<>(result, HttpStatus.OK);
