@@ -1,6 +1,6 @@
 package com.abdt.api;
 
-import com.abdt.api.controller.UserService;
+import com.abdt.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

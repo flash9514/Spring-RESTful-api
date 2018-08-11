@@ -1,7 +1,7 @@
-package com.abdt.api.controller;
+package com.abdt.api.service;
 
-import com.abdt.api.model.User;
-import com.abdt.api.model.UserPrincipal;
+import com.abdt.api.domain.User;
+import com.abdt.api.domain.UserPrincipal;
 import com.abdt.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

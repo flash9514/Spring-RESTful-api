@@ -1,4 +1,4 @@
-package com.abdt.api.model;
+package com.abdt.api.domain;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

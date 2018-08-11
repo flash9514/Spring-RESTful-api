@@ -1,5 +1,6 @@
-package com.abdt.api.model;
+package com.abdt.api.domain;
 
+import com.abdt.api.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

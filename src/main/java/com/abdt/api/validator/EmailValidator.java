@@ -1,4 +1,4 @@
-package com.abdt.api.model;
+package com.abdt.api.validator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

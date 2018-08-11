@@ -1,8 +1,9 @@
-package com.abdt.api.controller;
+package com.abdt.api.web;
 
-import com.abdt.api.model.EmailValidator;
-import com.abdt.api.model.User;
-import com.abdt.api.model.UserPrincipal;
+import com.abdt.api.service.UserService;
+import com.abdt.api.validator.EmailValidator;
+import com.abdt.api.domain.User;
+import com.abdt.api.domain.UserPrincipal;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
