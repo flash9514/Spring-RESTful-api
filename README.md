@@ -1,7 +1,7 @@
 # Spring-RESTful-api
 
 This is a RESTful api based on Java Spring framework with basic authentication (Spring Security). 
-Hibernate (ORM) and repository pattern are used to work with data.
+Hibernate (ORM) and repository pattern are used to work with data (Spring Data).
 
 Functionality:
 - basic authentication using email and password
@@ -16,4 +16,4 @@ Instruction for execution:
 2. Create api_users database
 3. Enjoy! (Postman was used in my case)
 
-P.S.: For registration, username(email) and password - mandatory, first_name and last_name - optional were typed as Body->form-data (key-value) in my case. As for profile update, any of four fields optionally are fed as Body->raw JSON(application/json).
+P.S.: For registration, username(email) and password - mandatory, first_name and last_name - optional. As for profile update, any of four fields are optional. In both cases the data is fed as JSON(application/json).
